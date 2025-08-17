@@ -6,8 +6,8 @@ using TMPro;
 
 public class MexerKirby : MonoBehaviour
 {
-    float velPos = 0.05f;
-    float velNeg = -0.05f;
+    float velPos = 0.1f;
+    float velNeg = -0.01f;
     SpriteRenderer spriteRenderer; // muda o sprite do jogador
 
     private void Start()
