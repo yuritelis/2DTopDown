@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5264031184710611919}
   - component: {fileID: 2297145694266866678}
   - component: {fileID: 8653710804159108341}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: moeda
   m_TagString: moeda
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

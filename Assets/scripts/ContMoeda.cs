@@ -7,27 +7,28 @@ using UnityEngine.UI;
 
 public class ContMoeda : MonoBehaviour
 {
-    int moeda = 0;
-    public TextMeshProUGUI contMoeda;
+    public int contMoeda = 0;
+    public TextMeshProUGUI contMoedaTxt;
     AudioSource audioSource;
 
     void Start()
     {
-        
+        contMoedaTxt.text = contMoeda.ToString();
     }
 
     void Update()
     {
-        Collider2D collision = Physics2D.OverlapCircle(transform.position, 0.1f, 128);
-        if (collision != null)
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("moeda"))
         {
-            if (collision.CompareTag("moeda"))
-            {
-                moeda++;
-                contMoeda.text = moeda.ToString();
-                audioSource.Play();
-                Destroy(collision.gameObject);
-            }
+            contMoeda++;
+            contMoedaTxt.text = contMoeda.ToString();
+            Destroy(collision.gameObject);
+            audioSource.Play();
         }
     }
 }
