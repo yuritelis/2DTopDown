@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 public class MexerZapZap : MonoBehaviour
 {
     float vZap = 0.5f;
+    AudioSource audioSource;
+    public AudioClip musicaMenu;
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+
+        audioSource.Play();
     }
 
     void Update()
