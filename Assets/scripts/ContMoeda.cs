@@ -10,6 +10,7 @@ public class ContMoeda : MonoBehaviour
     public int contMoeda = 0;
     public TextMeshProUGUI contMoedaTxt;
     AudioSource audioSource;
+    public AudioClip somMoeda;
 
     void Start()
     {
@@ -19,7 +20,10 @@ public class ContMoeda : MonoBehaviour
 
     void Update()
     {
-        
+        if(contMoeda >= 15)
+        {
+            SceneManager.LoadScene("FimJogo");
+        }
     }
 
     
@@ -31,6 +35,8 @@ public class ContMoeda : MonoBehaviour
             contMoedaTxt.text = contMoeda.ToString();
             Destroy(collision.gameObject);
             audioSource.Play();
+            if (somMoeda != null)
+                audioSource.PlayOneShot(somMoeda);
         }
     }
 }

@@ -7,9 +7,7 @@ public class HpController : MonoBehaviour
 {
     [Header("Health Settings")]
     public int hpAtual = 6;
-    public int danoRecebe = 0;
-    private bool isInvulnerable = false;
-    [SerializeField] private float iFramesDuration = 0.3f;
+    public int hpMax = 6;
 
     public HpUiControl hpUI;
     private SpriteRenderer spriteRenderer;
@@ -17,14 +15,24 @@ public class HpController : MonoBehaviour
 
     int danoInimigo = 2;
     int danoTrap = 1;
+    public AudioClip somDano;
+
 
     void Start()
     {
-        hpUI.SetMaxHearts(hpAtual);
+        hpUI.SetMaxHearts(hpMax);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if(hpAtual <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,34 +40,28 @@ public class HpController : MonoBehaviour
         if (collision.collider.CompareTag("inimigo"))
         {
             TakeDamage(danoInimigo);
-            danoRecebe += danoInimigo;
             Destroy(collision.gameObject);
-            Debug.Log("perdeu vida");
-            audioSource.Play();
+            if (somDano != null)
+                audioSource.PlayOneShot(somDano);
         }
         else if (collision.collider.CompareTag("trap"))
         {
             TakeDamage(danoTrap);
-            danoRecebe += danoTrap;
             Destroy(collision.gameObject);
-            Debug.Log("perdeu vida");
-            audioSource.Play();
+            if (somDano != null)
+                audioSource.PlayOneShot(somDano);
         }
     }
 
     public void TakeDamage(int dano)
     {
-        if (isInvulnerable) return;
         hpAtual -= dano;
+        Debug.Log($"[{gameObject.name}] Dano: {dano}, HP restante: {hpAtual}");
+
         hpUI.UpdatedHearts(hpAtual);
 
         StartCoroutine(FlashRed());
-        if (hpAtual <= 0 && danoRecebe >= 6)
-        {
-            //Die();
-            SceneManager.LoadScene("GameOver");
-        }
-        StartCoroutine(ActivateIFrames());
+        StartCoroutine(BlinkSprite());
     }
 
     private IEnumerator FlashRed()
@@ -69,12 +71,12 @@ public class HpController : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    private IEnumerator ActivateIFrames()
+    private IEnumerator BlinkSprite()
     {
-        isInvulnerable = true;
-
+        float duration = 0.6f;
         float elapsed = 0f;
-        while (elapsed < iFramesDuration)
+
+        while (elapsed < duration)
         {
             spriteRenderer.enabled = false;
             yield return new WaitForSeconds(0.1f);
@@ -82,11 +84,7 @@ public class HpController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             elapsed += 0.2f;
         }
-
-        isInvulnerable = false;
     }
-
-
     private void Die()
     {
         SceneManager.LoadScene("GameOver");

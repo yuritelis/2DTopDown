@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class MexerZapZap : MonoBehaviour
 {
     float vZap = 0.5f;
-    bool botAtivo = false;
 
     void Start()
     {
