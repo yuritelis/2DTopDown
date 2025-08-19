@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class MexerZapZap : MonoBehaviour
 {
     float vZap = 0.5f;
+    bool botAtivo = false;
 
     void Start()
     {
@@ -18,7 +19,12 @@ public class MexerZapZap : MonoBehaviour
             transform.position += new Vector3(0, vZap * Time.deltaTime, 0);
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Space))
+        if (Input.anyKeyDown)
+        {
+            transform.position = new Vector3(0, 0, 0);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             SceneManager.LoadScene("Level01");
         }

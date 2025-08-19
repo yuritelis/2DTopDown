@@ -8,6 +8,9 @@ TagManager:
   - moeda
   - inimigo
   - trap
+  - menu
+  - play
+  - quit
   layers:
   - Default
   - TransparentFX

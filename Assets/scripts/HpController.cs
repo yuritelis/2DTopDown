@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class HpController : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int hpMax = 6;
-    private int hpAtual;
+    public int hpAtual = 6;
+    public int danoRecebe = 0;
     private bool isInvulnerable = false;
     [SerializeField] private float iFramesDuration = 0.3f;
 
@@ -19,8 +19,7 @@ public class HpController : MonoBehaviour
 
     void Start()
     {
-        hpAtual = hpMax;
-        hpUI.SetMaxHearts(hpMax);
+        hpUI.SetMaxHearts(hpAtual);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -30,12 +29,14 @@ public class HpController : MonoBehaviour
         if (collision.collider.CompareTag("inimigo"))
         {
             TakeDamage(danoInimigo);
+            danoRecebe += danoInimigo;
             Destroy(collision.gameObject);
             Debug.Log("perdeu vida");
         }
         else if (collision.collider.CompareTag("trap"))
         {
             TakeDamage(danoTrap);
+            danoRecebe += danoTrap;
             Destroy(collision.gameObject);
             Debug.Log("perdeu vida");
         }
@@ -48,9 +49,10 @@ public class HpController : MonoBehaviour
         hpUI.UpdatedHearts(hpAtual);
 
         StartCoroutine(FlashRed());
-        if (hpAtual <= 0)
+        if (hpAtual <= 0 && danoRecebe >= 6)
         {
-            Die();
+            //Die();
+            SceneManager.LoadScene("GameOver");
         }
         StartCoroutine(ActivateIFrames());
     }
@@ -82,6 +84,6 @@ public class HpController : MonoBehaviour
 
     private void Die()
     {
-        //SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOver");
     }
 }
