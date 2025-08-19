@@ -7,7 +7,7 @@ using TMPro;
 public class MexerKirby : MonoBehaviour
 {
     [SerializeField]
-    float velKirby = 0.05f;
+    float velKirby = 0.001f;
 
     SpriteRenderer spriteRenderer; // muda o sprite do jogador
 

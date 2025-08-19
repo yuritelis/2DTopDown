@@ -14,6 +14,7 @@ public class ContMoeda : MonoBehaviour
     void Start()
     {
         contMoedaTxt.text = contMoeda.ToString();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()

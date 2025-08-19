@@ -13,6 +13,7 @@ public class HpController : MonoBehaviour
 
     public HpUiControl hpUI;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
 
     int danoInimigo = 2;
     int danoTrap = 1;
@@ -22,6 +23,8 @@ public class HpController : MonoBehaviour
         hpUI.SetMaxHearts(hpAtual);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +35,7 @@ public class HpController : MonoBehaviour
             danoRecebe += danoInimigo;
             Destroy(collision.gameObject);
             Debug.Log("perdeu vida");
+            audioSource.Play();
         }
         else if (collision.collider.CompareTag("trap"))
         {
@@ -39,6 +43,7 @@ public class HpController : MonoBehaviour
             danoRecebe += danoTrap;
             Destroy(collision.gameObject);
             Debug.Log("perdeu vida");
+            audioSource.Play();
         }
     }
 
