@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227696810756019013}
   - component: {fileID: 5807429288974135809}
-  - component: {fileID: 209675747082261036}
+  - component: {fileID: 28472764611384058}
   m_Layer: 0
   m_Name: trap
   m_TagString: trap
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &209675747082261036
+--- !u!61 &28472764611384058
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

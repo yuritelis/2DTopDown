@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 17d66a95a1559db4597d36bdb80661f0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - heartPrefab: {fileID: 47789896838655450, guid: b5327b72f5306554ea9ed3fa5a01cdff, type: 3}
+  - fullHeartSprite: {instanceID: 0}
+  - emptyHeartSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

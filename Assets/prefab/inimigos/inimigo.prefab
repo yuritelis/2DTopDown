@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2440369250605106806}
   - component: {fileID: 8235555525020117371}
-  - component: {fileID: 4452157217031079487}
-  m_Layer: 7
+  - component: {fileID: 1243674576053981133}
+  m_Layer: 0
   m_Name: inimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4452157217031079487
+--- !u!61 &1243674576053981133
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
